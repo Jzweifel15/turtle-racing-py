@@ -1,4 +1,12 @@
 import turtle
+import time
+import random
+
+# Width and Height of the canvas/screen
+WIDTH, HEIGHT = 500, 500
+
+# A list of colors for the turtle racers
+COLORS = ["red", "green", "blue", "orange", "yellow", "black", "purple", "pink", "brown", "cyan"]
 
 # A function that asks the User for the number of turtles to race
 def get_number_of_racers():
@@ -19,10 +27,25 @@ def get_number_of_racers():
       print("Number not in range 2 - 10. Try again!")
 
 
-def init_turtle():
-  # Width and Height of the canvas/screen
-  WIDTH, HEIGHT = 500, 500
+# A function that creates the entered number of turtles and evenly places them on the canvas in their starting positions
+def create_turtles(colors):
+  turtles = []
+  spacing_x = WIDTH // (len(colors) + 1)
 
+  for i, color in enumerate(colors):
+    racer = turtle.Turtle()
+    racer.color(color) 
+    racer.shape("turtle")
+    racer.left(90)
+    racer.penup()
+    racer.setpos(-WIDTH//2 + (i + 1) * spacing_x, -HEIGHT//2 + 20)
+    racer.pendown()
+    turtles.append(turtle)
+
+  return turtles
+
+
+def init_turtle():
   # Declaration and setup of the canvas/screen
   screen = turtle.Screen()
   screen.setup(WIDTH, HEIGHT)
@@ -30,3 +53,7 @@ def init_turtle():
 
 racers = get_number_of_racers()
 init_turtle()
+
+random.shuffle(COLORS)
+colors = COLORS[:racers]
+create_turtles(colors)
