@@ -19,5 +19,14 @@ def get_number_of_racers():
       print("Number not in range 2 - 10. Try again!")
 
 
+def init_turtle():
+  # Width and Height of the canvas/screen
+  WIDTH, HEIGHT = 500, 500
+
+  # Declaration and setup of the canvas/screen
+  screen = turtle.Screen()
+  screen.setup(WIDTH, HEIGHT)
+  screen.title("Ninja Turtle Racing!")
+
 racers = get_number_of_racers()
-print(racers)
+init_turtle()
